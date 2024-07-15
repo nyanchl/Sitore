@@ -5,7 +5,7 @@ import './index.css'
 
 function App() {
   const [count, setCount] = useState(0)
-  const [url, setUrl] = useState("")
+  const [url, setUrl] = useState("nothing")
   // function getCurrentTab() {
   //   const queryOptions = { active: true, lastFocusedWindow: true };
   //   // `tab` will either be a `tabs.Tab` instance or `undefined`.
@@ -36,5 +36,5 @@ function App() {
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
 )
