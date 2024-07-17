@@ -18,7 +18,6 @@ function App() {
   }
   const addInNotion = () => {
     chrome.runtime.sendMessage({ action: "addInNotion", comment: comment}, response => {
-      console.log(response)
     })
   }
   return (
