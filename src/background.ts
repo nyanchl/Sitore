@@ -1,4 +1,4 @@
-function addInNotion(title: string | undefined, url: string | undefined) {
+function addInNotion(title: string | undefined, url: string | undefined, comment: string | undefined) {
     const token = import.meta.env.VITE_NOTION_TOKEN
     const headers = {
         "Authorization": `Bearer ${token}`,
@@ -6,9 +6,11 @@ function addInNotion(title: string | undefined, url: string | undefined) {
         "Notion-Version": "2022-06-28"
     }
     const body = JSON.stringify({
-        "parent": {"page_id": "16f6ceb11a8846b9b04f79431c0be5ca"},
+        "parent": {"database_id": "d6335fbe242b48e6aba347ae963b5fe1"},
         "properties": {
-            "title": { "title": [{ "text": { "content": title } }] }
+            "title": { "title": [{ "text": { "content": title } }] },
+            "URL": { "url": url },
+            "comment": { "rich_text": [{ "text": { "content": comment } }] }
         },
         "children": [
             {
@@ -38,7 +40,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             const tab = tabs[0];
             if (tab) {
                 sendResponse({ url: tab.url });
-                addInNotion(tab.title, tab.url);
+                addInNotion(tab.title, tab.url, message.comment);
             } else {
                 sendResponse({ url: null });
             }
