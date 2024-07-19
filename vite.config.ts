@@ -3,6 +3,9 @@ import {crx, defineManifest} from '@crxjs/vite-plugin'
 
 const manifest = defineManifest({
   "manifest_version": 3,
+  "host_permissions": [
+      "https://api.notion.com/*"
+  ],
   "name": "Sitore",
   "description": "Store your favorite sites in Notion.",
   "version": "1.0.0",
