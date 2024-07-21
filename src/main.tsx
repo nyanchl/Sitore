@@ -8,7 +8,7 @@ function App() {
   const [comment, setComment] = useState("")
   const addInNotion = () => {
     chrome.runtime.sendMessage({ action: "addInNotion", comment: comment }, response => {
-      console.log("hoge",response)
+      console.log(response)
     })
   }
   return (

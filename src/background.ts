@@ -6,7 +6,7 @@ function addInNotion(title: string | undefined, url: string | undefined, comment
         "Notion-Version": "2022-06-28"
     }
     const body = JSON.stringify({
-        "parent": {"database_id": "d6335fbe242b48e6aba347ae963b5fe1"},
+        "parent": {"database_id": import.meta.env.VITE_NOTION_DATABASE_ID},
         "properties": {
             "title": { "title": [{ "text": { "content": title } }] },
             "URL": { "url": url },
@@ -30,7 +30,6 @@ function addInNotion(title: string | undefined, url: string | undefined, comment
         body: body
     })
     .then(response => response.json())
-    .then(data => console.log(data))
     .catch(error => console.error("Error:", error));
 }
 
